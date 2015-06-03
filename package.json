@@ -1,0 +1,30 @@
+{
+  "name": "modella-computed",
+  "version": "1.0.0",
+  "description": "Define computed properties on modella models",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test | faucet"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deanlandolt/modella-computed.git"
+  },
+  "keywords": [
+    "modella",
+    "computed",
+    "properties",
+    "accessors"
+  ],
+  "author": "Dean Landolt <dean@deanlandolt.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/deanlandolt/modella-computed/issues"
+  },
+  "homepage": "https://github.com/deanlandolt/modella-computed#readme",
+  "devDependencies": {
+    "faucet": "0.0.1",
+    "modella": "^0.2.14",
+    "tape": "^4.0.0"
+  }
+}
