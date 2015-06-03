@@ -10,21 +10,23 @@ Define computed properties on modella models.
 var computed = require('modella-computed')
 var Mustard = model('Mustard')
   .use(computed)
-  .attr('flavor', {
-    defaultValue: 'Spicy'
-  })
   .attr('color', {
-    // defines a constant on model `attrs`
-    value: 'Golden'
+    defaultValue: 'Golden'
+  })
+  .attr('flavor', {
+    // defines a constant
+    value: 'Spicy'
   })
   .attr('name', {
-    // defines a getter on model `attrs`, invoked with model as context
+    // defines a getter, invoked with model bound as `this` context
     get: function () {
       return this.flavor() + ' ' + this.color()
     }
   })
 
 var mustard = new Mustard({ color : 'Brown' });
-
 mustard.name(); // 'Spicy Brown'
+
+mustard.set({ color: 'Yellow' })
+mustard.name(); // 'Spicy Yellow'
 ```

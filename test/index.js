@@ -10,17 +10,28 @@ test('values', function (t) {
 
   var mustard = new Mustard()
   t.equal(mustard.get('flavor'), 'Spicy')
-  t.equal(mustard.get('color'), 'Golden')
   t.equal(mustard.flavor(), 'Spicy')
+
+  t.equal(mustard.get('color'), 'Golden')
   t.equal(mustard.color(), 'Golden')
+  t.deepEqual(mustard.toJSON(), {
+    flavor: 'Spicy',
+    color: 'Golden'
+  })
 
   mustard = new Mustard({ color: 'Brown' })
-  t.equal(mustard.flavor(), 'Spicy')
   t.equal(mustard.color(), 'Brown')
+  t.deepEqual(mustard.toJSON(), {
+    flavor: 'Spicy',
+    color: 'Brown'
+  })
 
-  mustard.set({ color: 'Golden' })
-  t.equal(mustard.flavor(), 'Spicy')
-  t.equal(mustard.color(), 'Golden')
+  mustard.set({ color: 'Yellow' })
+  t.equal(mustard.color(), 'Yellow')
+  t.deepEqual(mustard.toJSON(), {
+    flavor: 'Spicy',
+    color: 'Yellow'
+  })
 
   t.end()
 })
@@ -37,19 +48,31 @@ test('getters', function (t) {
     })
 
   var mustard = new Mustard()
-  t.equal(mustard.flavor(), 'Spicy')
-  t.equal(mustard.color(), 'Golden')
+  t.equal(mustard.get('flavor'), 'Spicy')
+  t.equal(mustard.get('color'), 'Golden')
+  t.equal(mustard.get('name'), 'Spicy Golden')
   t.equal(mustard.name(), 'Spicy Golden')
+  t.deepEqual(mustard.toJSON(), {
+    flavor: 'Spicy',
+    color: 'Golden',
+    name: 'Spicy Golden'
+  })
 
   var mustard = new Mustard({ color: 'Brown' })
-  t.equal(mustard.flavor(), 'Spicy')
-  t.equal(mustard.color(), 'Brown')
   t.equal(mustard.name(), 'Spicy Brown')
+  t.deepEqual(mustard.toJSON(), {
+    flavor: 'Spicy',
+    color: 'Brown',
+    name: 'Spicy Brown'
+  })
 
-  mustard.set({ color: 'Golden' })
-  t.equal(mustard.flavor(), 'Spicy')
-  t.equal(mustard.color(), 'Golden')
-  t.equal(mustard.name(), 'Spicy Golden')
+  mustard.set({ color: 'Yellow' })
+  t.equal(mustard.name(), 'Spicy Yellow')
+  t.deepEqual(mustard.toJSON(), {
+    flavor: 'Spicy',
+    color: 'Yellow',
+    name: 'Spicy Yellow'
+  })
 
   t.end()
 })
