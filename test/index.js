@@ -33,6 +33,13 @@ test('values', function (t) {
     color: 'Yellow'
   })
 
+  mustard.set({ flavor: 'Umami' })
+  t.equal(mustard.flavor(), 'Spicy')
+
+  mustard = new Mustard({ flavor: 'Umami' })
+  t.equal(mustard.flavor(), 'Spicy')
+  t.equal(mustard.color(), 'Golden')
+
   t.end()
 })
 
