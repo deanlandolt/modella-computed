@@ -4,26 +4,22 @@ module.exports = function (Model) {
 
     Object.keys(Model.attrs).forEach(function (key) {
       var options = Model.attrs[key]
-      var descriptor
 
       if (Object.hasOwnProperty.call(options, 'value')) {
-        descriptor || (descriptor = {})
-        descriptor.value = options.value
+        return Object.defineProperty(model.attrs, key, {
+          value: options.value,
+          enumerable: true
+        })
       }
 
       if (typeof options.get === 'function') {
-        descriptor || (descriptor = {})
+        var descriptor = {}
         descriptor.get = options.get.bind(model)
-      }
 
-      if (typeof options.set === 'function') {
-        descriptor || (descriptor = {})
-        descriptor.set = options.set.bind(model)
-      }
-
-      if (descriptor) {
-        descriptor.enumerable = true
-        Object.defineProperty(model.attrs, key, descriptor)
+        if (typeof options.set === 'function') {
+          descriptor.set = options.set.bind(model)
+        }
+        return Object.defineProperty(model.attrs, key, descriptor)
       }
     })
 
