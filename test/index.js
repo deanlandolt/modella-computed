@@ -5,15 +5,15 @@ var computed = require('../')
 test('values', function (t) {
   var Mustard = model('Mustard')
     .use(computed)
-    .attr('flavor', { value: 'Spicy' })
+    .attr('flavor', { value: 'Spicy', enumerable: true })
     .attr('color', { defaultValue: 'Golden' })
 
   var mustard = new Mustard()
-  t.equal(mustard.get('flavor'), 'Spicy')
-  t.equal(mustard.flavor(), 'Spicy')
+  t.equal(mustard.get('flavor'), 'Spicy', 'flavor getter')
+  t.equal(mustard.flavor(), 'Spicy', 'flavor method')
 
-  t.equal(mustard.get('color'), 'Golden')
-  t.equal(mustard.color(), 'Golden')
+  t.equal(mustard.get('color'), 'Golden', 'color getter')
+  t.equal(mustard.color(), 'Golden', 'color method')
   t.deepEqual(mustard.toJSON(), {
     flavor: 'Spicy',
     color: 'Golden'
