@@ -52,6 +52,28 @@ test('enumerable', function (t) {
   t.deepEqual(mustard.toJSON(), {
     flavor: 'Spicy'
   })
+  var Mustard = model('Mustard')
+    .use(computed)
+    .attr('flavor', {
+      get: function () {
+        return 'Spicy'
+      }
+    })
+    .attr('color', {
+      get: function () {
+        return 'Yellow'
+      },
+      enumerable: true
+    })
+    .attr('size')
+
+  var mustard = new Mustard({ size: 1 })
+  t.equal(mustard.flavor(), 'Spicy')
+  t.equal(mustard.color(), 'Yellow')
+  t.deepEqual(mustard.toJSON(), {
+    color: 'Yellow',
+    size: 1
+  })
 
   t.end()
 })
