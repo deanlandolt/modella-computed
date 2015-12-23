@@ -25,6 +25,6 @@
   "devDependencies": {
     "faucet": "0.0.1",
     "modella": "^0.2.14",
-    "tape": "^4.0.0"
+    "tape": "^4.3.0"
   }
 }
